@@ -8,6 +8,7 @@ pub fn shortest_distance_to_char(s: String, c: char) -> Vec<i32> {
         .filter_map(|(i, &ch)| if ch == c { Some(i) } else { None })
         .collect();
 
+    println!("c_pos: {:?}", c_pos);
     let mut answer = Vec::with_capacity(n);
 
     for i in 0..n {
@@ -20,4 +21,9 @@ pub fn shortest_distance_to_char(s: String, c: char) -> Vec<i32> {
         answer.push(min_distance);
     }
     answer
+}
+
+#[test]
+fn test_shortest_distance_to_char() {
+    shortest_distance_to_char("loveleetcode".to_string(), 'e');
 }

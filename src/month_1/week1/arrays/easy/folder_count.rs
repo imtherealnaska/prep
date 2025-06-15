@@ -4,7 +4,7 @@ fn folder_count(logs: Vec<String>) -> i32 {
         match op.as_str() {
             "../" => count = std::cmp::max(0, count - 1),
             "./" => {}
-            _ => count + 1,
+            _ => count += 1,
         }
     }
     count

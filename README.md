@@ -1,0 +1,30 @@
+## Algorithms and DS:
+
+- linear search.
+- binary search
+- quadratic sorting
+- merge sort
+- heap sort
+- binary heap
+- growable array
+- doubly-linked list
+- binary search tree
+- AVL tree
+- RedBlack Tree
+- B-tree
+- Splay Tree
+- HashTable
+- Depth First Search
+- Breadth First Search
+- Topological Sort
+- Strongly Connected Components
+- Minimal Spanning Tree
+- Dijkstra
+- Floyd-Warshall
+- Bellman-Ford
+- Quadratic Substring Search
+- Rabin-Karp
+- Boyer-Moore
+- Knuth-Morris-Pratt
+- Aho-Corasick
+- Edit Distance

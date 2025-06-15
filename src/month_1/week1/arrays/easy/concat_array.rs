@@ -5,11 +5,11 @@ pub fn concat_array(nums: Vec<i32>) -> Vec<i32> {
         .collect()
 }
 
-pub fn concat_array(nums: Vec<i32>) -> Vec<i32> {
+pub fn concat_array1(nums: Vec<i32>) -> Vec<i32> {
     let n = nums.len();
     let mut ans = vec![0; 2 * n];
 
-    // O(n) -> 
+    // O(n) ->
     for i in 0..n {
         ans[i] = nums[i];
         ans[i + n] = nums[i];
@@ -17,7 +17,7 @@ pub fn concat_array(nums: Vec<i32>) -> Vec<i32> {
     ans
 }
 
-pub fn concat_array(nums: Vec<i32>) -> Vec<i32> {
+pub fn concat_array2(nums: Vec<i32>) -> Vec<i32> {
     let n = nums.len();
     let mut ans = Vec::with_capacity(2 * n);
     // Still O(n) but O(2n)
