@@ -6,7 +6,7 @@ pub struct ListNode {
 
 impl ListNode {
     #[inline]
-    fn new(val: i32) -> Self {
+    pub fn new(val: i32) -> Self {
         ListNode { val, next: None }
     }
 }
@@ -21,6 +21,7 @@ fn linked_list_cycle(head: Option<Box<ListNode>>) -> bool {
 
     while fast.is_some() && fast.as_ref().unwrap().next.is_some() {
         slow = &slow.as_ref().unwrap().next;
+
         fast = &fast.as_ref().unwrap().next.as_ref().unwrap().next;
 
         if std::ptr::eq(

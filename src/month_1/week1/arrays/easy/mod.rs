@@ -23,6 +23,7 @@ pub mod invert_miage;
 pub mod linked_list_cycle;
 pub mod middle_linkedlist;
 pub mod palindrome_linked_list;
+pub mod shortest_string_max_min;
 pub mod sort_parity;
 pub mod strobogrammatic;
 
@@ -30,6 +31,13 @@ pub mod strobogrammatic;
 pub mod contains_dup_2;
 pub mod diet_plan_performance;
 pub mod harmonious_seq;
-pub mod min_pos_sum_array;
 pub mod max_avg_subarray;
+pub mod min_pos_sum_array;
 pub mod x_sum;
+
+//prefix sum
+pub mod longest_subseq_limited_sum;
+pub mod max_altitude;
+pub mod min_val_pos_step_step;
+pub mod pivot_index;
+pub mod range_sum_query;

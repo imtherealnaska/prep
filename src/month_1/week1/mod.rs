@@ -1,6 +1,7 @@
 pub mod arrays;
 pub mod hash_tables;
 pub mod ll;
+pub mod strings;
 
 pub mod searching;
 pub mod sorting;
@@ -10,3 +11,6 @@ pub mod sorting;
 // dive deep into solutions .
 // List potential edge cases.
 // self guided mock-sessions
+
+
+pub mod medium;
