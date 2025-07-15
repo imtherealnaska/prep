@@ -1,61 +1,60 @@
-fn kmp_search(text: &str, pattern: &str) -> Vec<usize> {
-    let n = text.len();
-    let m = pattern.len();
-
-    if m == 0 {
-        return (0..=n).collect();
-    }
-
-    if n == 0 || m > n {
-        return vec![];
-    }
-
-    let text_bytes = text.as_bytes();
-    let pattern_bytes = pattern.as_bytes();
-
-    let lps = lps(pattern_bytes);
-
-    let mut i = 0; // text 
-    let mut j = 0; // pattern 
-    let mut matches = Vec::new();
-
-    while i < n {
-        if pattern_bytes[j] == text_bytes[i] {
-            i += 1;
-            j += 1;
-        }
-        if j == m {
-            matches.push(i - j);
-            j = lps[j - 1];
-        } else if i < n && pattern_bytes[j] != text_bytes[i] {
-            if j != 0 {
-                j = lps[j - 1];
-            } else {
-                i += 1;
-            }
-        }
-    }
-    matches
+pub struct KMP {
+    lps: Vec<usize>,
+    pattern: Vec<u8>,
 }
 
-pub fn lps(pattern: &[u8]) -> Vec<usize> {
-    let m = pattern.len();
-    let mut lps = vec![0; m];
-
-    let mut length = 0;
-    let mut i = 1;
-
-    while i < m {
-        if pattern[i] == pattern[length] {
-            length += 1;
-            lps[i] = length;
-            length += 1;
-        } else if length != 0 {
-            length = lps[length - 1];
-        } else {
-            lps[i] = 0;
-            i += 1;
-        }
+impl KMP {
+    pub fn new(pattern: &str) -> Self {
+        let pattern = pattern.as_bytes().to_vec();
+        let lps = Self::compute_lps(&pattern);
+        KMP { lps, pattern }
     }
-    lps
+
+    pub fn compute_lps(pattern: &[u8]) -> Vec<usize> {
+        let mut lps = vec![0; pattern.len()];
+        let mut len = 0;
+        let mut i = 1;
+
+        while i < pattern.len() {
+            if pattern[i] == pattern[len] {
+                len += 1;
+                lps[i] = len;
+                i += 1;
+            } else {
+                if len != 0 {
+                    len = lps[len - 1];
+                } else {
+                    lps[i] = 0;
+                    i += 1;
+                }
+            }
+        }
+        lps
+    }
+
+    pub fn find_matches(&self, text: &str) -> Vec<usize> {
+        let text = text.as_bytes();
+        let mut matches = Vec::new();
+        let mut i = 0;
+        let mut j = 0;
+
+        while i < text.len() {
+            if self.pattern[j] == text[i] {
+                i += 1;
+                j += 1;
+            }
+
+            if j == self.pattern.len() {
+                matches.push(i - j);
+                j = self.lps[j - 1];
+            } else if i < text.len() && self.pattern[j] != text[i] {
+                if j != 0 {
+                    j = self.lps[j - 1];
+                } else {
+                    i += 1;
+                }
+            }
+        }
+        matches
+    }
 }
